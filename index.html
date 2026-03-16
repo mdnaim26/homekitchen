@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Kitchen – Fresh Homemade Food Delivered</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ============================================================ NAVBAR ============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <i class="fa-solid fa-bowl-food"></i>
+      <span>Home <strong>Kitchen</strong></span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#menu" class="nav-link">Menu</a></li>
+      <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+      <li><a href="#about" class="nav-link">About Us</a></li>
+      <li><a href="#reviews" class="nav-link">Reviews</a></li>
+      <li><a href="#track" class="nav-link">Track Order</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- Theme Toggle -->
+      <button class="icon-btn" id="themeToggle" title="Toggle theme">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+      </button>
+
+      <!-- Search -->
+      <button class="icon-btn" id="searchToggle" title="Search food">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/8801700000000" class="icon-btn whatsapp-btn" title="Order via WhatsApp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+
+      <!-- Cart -->
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+
+      <!-- Auth Buttons (shown when logged out) -->
+      <div class="auth-btns" id="authBtns">
+        <a href="login.html" class="btn btn-ghost">Login</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+      </div>
+
+      <!-- User Menu (shown when logged in) -->
+      <div class="user-menu" id="userMenu" style="display:none;">
+        <button class="user-avatar-btn" id="userAvatarBtn">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="user-dropdown" id="userDropdown">
+          <div class="user-dropdown-header">
+            <strong id="dropdownName">User</strong>
+            <span id="dropdownEmail">user@email.com</span>
+          </div>
+          <a href="#" class="dropdown-item"><i class="fa-solid fa-receipt"></i> My Orders</a>
+          <a href="dashboard.html" class="dropdown-item" id="dashboardLink" style="display:none;">
+            <i class="fa-solid fa-gauge"></i> Dashboard
+          </a>
+          <button class="dropdown-item logout-item" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Search Bar (expandable) -->
+  <div class="search-bar-wrap" id="searchBarWrap">
+    <div class="search-bar-inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Search for biryani, curry, roti..."/>
+      <button id="searchClear"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================ NOTIFICATION POPUP ============================================================ -->
+<div class="order-notif" id="orderNotif">
+  <div class="notif-icon"><i class="fa-solid fa-bell"></i></div>
+  <div class="notif-body">
+    <strong>New Order Received! 🎉</strong>
+    <span>Chicken Biryani × 2 placed just now</span>
+  </div>
+  <button class="notif-close" id="notifClose"><i class="fa-solid fa-xmark"></i></button>
+</div>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge"><i class="fa-solid fa-leaf"></i> 100% Homemade &amp; Fresh Daily</span>
+    <h1 class="hero-title">Home<br/><span>Kitchen</span></h1>
+    <p class="hero-tagline">Fresh Homemade Food<br/>Delivered to Your Door</p>
+    <p class="hero-desc">Cooked daily with love, fresh ingredients, and traditional family recipes — just like Ma's cooking, delivered right to you in Dhaka.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-utensils"></i> Order Now</a>
+      <a href="#menu" class="btn btn-outline"><i class="fa-solid fa-book-open"></i> View Menu</a>
+      <a href="https://wa.me/8801700000000" class="btn btn-whatsapp" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>500+</strong><span>Happy Customers</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>30–45</strong><span>Min Delivery</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>4.9★</strong><span>Average Rating</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><i class="fa-solid fa-chevron-down"></i></div>
+</section>
+
+<!-- ============================================================ MENU ============================================================ -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Menu</span>
+      <h2>Today's Homemade Specials</h2>
+      <p>Everything is cooked fresh daily — no preservatives, no shortcuts, just honest home cooking.</p>
+    </div>
+
+    <!-- Delivery Estimate Banner -->
+    <div class="delivery-banner">
+      <i class="fa-solid fa-motorcycle"></i>
+      <span>🕐 Estimated delivery: <strong>30–45 minutes</strong> &nbsp;|&nbsp; 📍 Delivering across <strong>Dhaka City</strong></span>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="menu-filters">
+      <button class="filter-btn active" data-filter="all">
+        <i class="fa-solid fa-border-all"></i> All Items
+      </button>
+      <button class="filter-btn" data-filter="rice">
+        <i class="fa-solid fa-bowl-rice"></i> Rice &amp; Biryani
+      </button>
+      <button class="filter-btn" data-filter="curry">
+        <i class="fa-solid fa-fire"></i> Curries
+      </button>
+      <button class="filter-btn" data-filter="bread">
+        <i class="fa-solid fa-bread-slice"></i> Bread
+      </button>
+      <button class="filter-btn" data-filter="dessert">
+        <i class="fa-solid fa-ice-cream"></i> Desserts
+      </button>
+    </div>
+
+    <!-- No results -->
+    <div class="no-results" id="noResults" style="display:none;">
+      <i class="fa-solid fa-bowl-food"></i>
+      <p>No items found. Try a different search!</p>
+    </div>
+
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================ HOW IT WORKS ============================================================ -->
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-header light">
+      <span class="section-tag">Simple &amp; Easy</span>
+      <h2>How It Works</h2>
+      <p>Getting delicious homemade food delivered is as easy as 1-2-3.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div class="step-num">01</div>
+        <h3>Choose Your Food</h3>
+        <p>Browse our daily menu, pick your favourite homemade dishes and add them to your cart.</p>
+      </div>
+      <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step-card">
+        <div class="step-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+        <div class="step-num">02</div>
+        <h3>Place Your Order</h3>
+        <p>Review your cart, choose your preferred payment method and confirm your order in seconds.</p>
+      </div>
+      <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="step-card">
+        <div class="step-icon"><i class="fa-solid fa-motorcycle"></i></div>
+        <div class="step-num">03</div>
+        <h3>Get Homemade Delivery</h3>
+        <p>Your fresh meal is cooked and delivered hot to your door within 30–45 minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ ABOUT ============================================================ -->
+<section class="about-section" id="about">
+  <div class="container about-grid">
+    <div class="about-image-wrap">
+      <div class="about-img-placeholder">
+        <i class="fa-solid fa-kitchen-set"></i>
+        <span>Our Kitchen</span>
+      </div>
+      <div class="about-badge-float"><i class="fa-solid fa-award"></i><span>Est. 2020</span></div>
+    </div>
+    <div class="about-content">
+      <span class="section-tag">Our Story</span>
+      <h2>Cooking with Love Since 2020</h2>
+      <p>Home Kitchen started as a small family passion — cooking nutritious, flavourful meals for our neighbours in Dhaka. Today we serve hundreds of families daily, but our heart hasn't changed.</p>
+      <ul class="about-list">
+        <li><i class="fa-solid fa-check-circle"></i> Cooked fresh every single day</li>
+        <li><i class="fa-solid fa-check-circle"></i> No artificial preservatives or additives</li>
+        <li><i class="fa-solid fa-check-circle"></i> Inspired by traditional Bangladeshi family recipes</li>
+        <li><i class="fa-solid fa-check-circle"></i> Prepared in a clean, hygienic home kitchen</li>
+        <li><i class="fa-solid fa-check-circle"></i> Affordable meals for every household</li>
+      </ul>
+      <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ REVIEWS ============================================================ -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Testimonials</span>
+      <h2>What Our Customers Say</h2>
+      <p>Real people, real taste — here's what the Home Kitchen family thinks.</p>
+    </div>
+    <div class="reviews-slider">
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-card">
+          <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="review-text">"The Chicken Biryani tastes just like my mother's cooking. I ordered for the whole family and everyone loved it. Highly recommended!"</p>
+          <div class="review-author"><div class="review-avatar">RA</div><div><strong>Rafiqul Alam</strong><span>Regular Customer, Mirpur</span></div></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="review-text">"Finally a food service that actually tastes homemade! The Beef Curry and Roti combo is absolutely divine. Delivery was super fast too."</p>
+          <div class="review-author"><div class="review-avatar">SN</div><div><strong>Sumaiya Noor</strong><span>Food Enthusiast, Dhanmondi</span></div></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+          <p class="review-text">"The khichuri during the rainy day hit differently. Such comfort food! Packaging is great and food arrived piping hot."</p>
+          <div class="review-author"><div class="review-avatar">MH</div><div><strong>Mehedi Hasan</strong><span>Office Worker, Gulshan</span></div></div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="review-text">"As a mother of two, Home Kitchen has been a lifesaver! Healthy, fresh, and the kids love every bite. The Special Dessert is their favourite!"</p>
+          <div class="review-author"><div class="review-avatar">FI</div><div><strong>Farida Islam</strong><span>Parent, Uttara</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="slider-btn" id="prevReview"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="slider-dots" id="sliderDots"></div>
+      <button class="slider-btn" id="nextReview"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TRACK ORDER ============================================================ -->
+<section class="track-section" id="track">
+  <div class="container">
+    <div class="section-header light">
+      <span class="section-tag">Track Your Order</span>
+      <h2>Where's My Food?</h2>
+      <p>Enter your Order ID to see real-time status of your delivery.</p>
+    </div>
+    <div class="track-box">
+      <div class="track-input-group">
+        <input type="text" id="trackInput" placeholder="Enter your Order ID (e.g. HK-2026-1234)"/>
+        <button class="btn btn-primary" id="trackBtn"><i class="fa-solid fa-magnifying-glass"></i> Track</button>
+      </div>
+      <div class="track-result" id="trackResult" style="display:none;">
+        <div class="track-steps">
+          <div class="track-step" id="ts1"><div class="ts-icon"><i class="fa-solid fa-receipt"></i></div><div class="ts-label">Order Received</div></div>
+          <div class="track-line" id="tl1"></div>
+          <div class="track-step" id="ts2"><div class="ts-icon"><i class="fa-solid fa-fire-burner"></i></div><div class="ts-label">Cooking</div></div>
+          <div class="track-line" id="tl2"></div>
+          <div class="track-step" id="ts3"><div class="ts-icon"><i class="fa-solid fa-motorcycle"></i></div><div class="ts-label">Out for Delivery</div></div>
+          <div class="track-line" id="tl3"></div>
+          <div class="track-step" id="ts4"><div class="ts-icon"><i class="fa-solid fa-house-circle-check"></i></div><div class="ts-label">Delivered</div></div>
+        </div>
+        <p class="track-status-msg" id="trackMsg"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CONTACT ============================================================ -->
+<section class="contact-section" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="section-tag">Get In Touch</span>
+      <h2>Contact Us</h2>
+      <p>Have questions or need help with your order? We're always here for you.</p>
+      <div class="contact-items">
+        <div class="contact-item"><div class="ci-icon"><i class="fa-solid fa-phone"></i></div><div><strong>Phone</strong><span>+880 1700-000000</span></div></div>
+        <div class="contact-item"><div class="ci-icon"><i class="fa-solid fa-envelope"></i></div><div><strong>Email</strong><span>hello@homekitchen.com.bd</span></div></div>
+        <div class="contact-item"><div class="ci-icon"><i class="fa-solid fa-location-dot"></i></div><div><strong>Delivery Area</strong><span>Dhaka City (Mirpur, Dhanmondi, Gulshan, Uttara &amp; more)</span></div></div>
+        <div class="contact-item"><div class="ci-icon whatsapp-ci"><i class="fa-brands fa-whatsapp"></i></div><div><strong>WhatsApp</strong><span><a href="https://wa.me/8801700000000" target="_blank">+880 1700-000000</a></span></div></div>
+      </div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="form-group"><label>Your Name</label><input type="text" id="cName" placeholder="e.g. Rafiq Ahmed" required/></div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" id="cPhone" placeholder="+880 1XXXXXXXXX" required/></div>
+      <div class="form-group"><label>Message</label><textarea id="cMsg" rows="4" placeholder="Tell us how we can help..." required></textarea></div>
+      <button type="submit" class="btn btn-primary full-width"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo footer-logo"><i class="fa-solid fa-bowl-food"></i><span>Home <strong>Kitchen</strong></span></a>
+      <p>Bringing the warmth of homemade cooking to your doorstep — fresh, healthy, made with love every day.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/8801700000000" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#menu">Menu</a></li><li><a href="#about">About Us</a></li><li><a href="#track">Track Order</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="footer-links"><h4>Our Food</h4><ul><li><a href="#menu">Chicken Biryani</a></li><li><a href="#menu">Beef Curry</a></li><li><a href="#menu">Khichuri</a></li><li><a href="#menu">Homemade Roti</a></li><li><a href="#menu">Special Dessert</a></li></ul></div>
+    <div class="footer-links"><h4>Working Hours</h4><ul><li><span>Mon–Fri</span>10am – 10pm</li><li><span>Sat–Sun</span>9am – 11pm</li></ul><p class="footer-delivery">🛵 Delivering across Dhaka</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Home Kitchen. All Rights Reserved. Made with <i class="fa-solid fa-heart"></i> in Dhaka.</p></div>
+</footer>
+
+<!-- ============================================================ CART SIDEBAR ============================================================ -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3><i class="fa-solid fa-bag-shopping"></i> Your Cart</h3>
+    <button class="cart-close" id="cartClose"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <i class="fa-solid fa-bowl-food"></i>
+      <p>Your cart is empty</p>
+      <a href="#menu" class="btn btn-primary" id="startOrdering">Start Ordering</a>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total"><span>Total:</span><strong id="cartTotal">৳0</strong></div>
+    <button class="btn btn-outline full-width" id="clearCartBtn"><i class="fa-solid fa-trash"></i> Clear Cart</button>
+    <button class="btn btn-primary full-width" id="checkoutBtn"><i class="fa-solid fa-lock"></i> Checkout</button>
+  </div>
+</aside>
+
+<!-- ============================================================ PAYMENT MODAL ============================================================ -->
+<div class="modal-overlay" id="paymentOverlay">
+  <div class="modal" id="paymentModal">
+    <button class="modal-close" id="paymentClose"><i class="fa-solid fa-xmark"></i></button>
+    <h3>Choose Payment Method</h3>
+    <p class="modal-subtitle">Select how you'd like to pay</p>
+    <div class="payment-groups">
+      <div class="payment-group">
+        <h4><i class="fa-solid fa-mobile-screen"></i> Mobile Banking</h4>
+        <div class="payment-options">
+          <label class="pay-option"><input type="radio" name="payment" value="bkash"/><div class="pay-card"><div class="pay-logo bkash">b</div><span>bKash</span></div></label>
+          <label class="pay-option"><input type="radio" name="payment" value="nagad"/><div class="pay-card"><div class="pay-logo nagad">N</div><span>Nagad</span></div></label>
+        </div>
+      </div>
+      <div class="payment-group">
+        <h4><i class="fa-solid fa-credit-card"></i> Card Payment</h4>
+        <div class="payment-options">
+          <label class="pay-option"><input type="radio" name="payment" value="visa"/><div class="pay-card"><div class="pay-logo visa"><i class="fa-brands fa-cc-visa"></i></div><span>Visa</span></div></label>
+          <label class="pay-option"><input type="radio" name="payment" value="mastercard"/><div class="pay-card"><div class="pay-logo mc"><i class="fa-brands fa-cc-mastercard"></i></div><span>Mastercard</span></div></label>
+        </div>
+      </div>
+      <div class="payment-group">
+        <h4><i class="fa-solid fa-money-bill-wave"></i> Cash</h4>
+        <div class="payment-options">
+          <label class="pay-option"><input type="radio" name="payment" value="cod"/><div class="pay-card"><div class="pay-logo cod"><i class="fa-solid fa-money-bill"></i></div><span>Cash on Delivery</span></div></label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-total">Order Total: <strong id="modalTotal">৳0</strong></div>
+    <button class="btn btn-primary full-width" id="placeOrderBtn"><i class="fa-solid fa-check-circle"></i> Place Order</button>
+  </div>
+</div>
+
+<!-- ============================================================ ORDER CONFIRMATION MODAL ============================================================ -->
+<div class="modal-overlay" id="confirmOverlay">
+  <div class="modal confirm-modal">
+    <div class="confirm-icon"><i class="fa-solid fa-circle-check"></i></div>
+    <h3>Order Placed Successfully!</h3>
+    <p>Thank you! Your homemade meal is being lovingly prepared.</p>
+    <div class="confirm-info">
+      <div class="ci-row"><span>Order ID:</span><strong id="confirmOrderId">–</strong></div>
+      <div class="ci-row"><span>Estimated Delivery:</span><strong>30–45 minutes</strong></div>
+      <div class="ci-row"><span>Payment:</span><strong id="confirmPayment">–</strong></div>
+    </div>
+    <p class="confirm-track-hint">Use your Order ID in the <a href="#track">Track Order</a> section!</p>
+    <button class="btn btn-primary" id="confirmClose">Great, Thanks!</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/8801700000000" class="fab-whatsapp" target="_blank" title="Order on WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script src="data.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

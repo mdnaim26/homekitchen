@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard – Home Kitchen</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="dashboard.css"/>
+</head>
+<body class="dashboard-page">
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="dash-sidebar" id="dashSidebar">
+  <div class="dash-sidebar-header">
+    <a href="index.html" class="nav-logo">
+      <i class="fa-solid fa-bowl-food"></i>
+      <span>Home <strong>Kitchen</strong></span>
+    </a>
+    <button class="dash-sidebar-close" id="sidebarClose"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="dash-nav">
+    <a href="#" class="dash-nav-item active" data-panel="overview">
+      <i class="fa-solid fa-gauge"></i> Overview
+    </a>
+    <a href="#" class="dash-nav-item" data-panel="orders">
+      <i class="fa-solid fa-receipt"></i> Manage Orders
+      <span class="nav-badge" id="pendingBadge">0</span>
+    </a>
+    <a href="#" class="dash-nav-item" data-panel="menu">
+      <i class="fa-solid fa-utensils"></i> Manage Menu
+    </a>
+    <a href="#" class="dash-nav-item" data-panel="messages">
+      <i class="fa-solid fa-envelope"></i> Messages
+      <span class="nav-badge" id="msgBadge">0</span>
+    </a>
+    <a href="#" class="dash-nav-item" data-panel="customers">
+      <i class="fa-solid fa-users"></i> Customers
+    </a>
+  </nav>
+  <div class="dash-sidebar-footer">
+    <a href="index.html" class="dash-nav-item"><i class="fa-solid fa-arrow-left"></i> Back to Site</a>
+    <button class="dash-nav-item logout-item" id="dashLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </div>
+</aside>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="dash-main">
+  <!-- Top Bar -->
+  <header class="dash-topbar">
+    <button class="dash-menu-toggle" id="dashMenuToggle"><i class="fa-solid fa-bars"></i></button>
+    <h1 class="dash-page-title" id="dashPageTitle">Overview</h1>
+    <div class="dash-topbar-right">
+      <button class="icon-btn" id="dashTheme" title="Toggle theme"><i class="fa-solid fa-moon" id="dashThemeIcon"></i></button>
+      <div class="dash-admin-info">
+        <div class="user-avatar" style="background:var(--orange);">A</div>
+        <div>
+          <strong id="dashAdminName">Admin</strong>
+          <span>Administrator</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dash-content">
+
+    <!-- ===== OVERVIEW PANEL ===== -->
+    <div class="dash-panel active" id="panel-overview">
+      <div class="stats-grid">
+        <div class="stat-card orange">
+          <div class="stat-card-icon"><i class="fa-solid fa-receipt"></i></div>
+          <div class="stat-card-info">
+            <span>Total Orders</span>
+            <strong id="statTotalOrders">0</strong>
+          </div>
+        </div>
+        <div class="stat-card green">
+          <div class="stat-card-icon"><i class="fa-solid fa-bangladeshi-taka-sign"></i></div>
+          <div class="stat-card-info">
+            <span>Total Revenue</span>
+            <strong id="statRevenue">৳0</strong>
+          </div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-card-icon"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-card-info">
+            <span>Customers</span>
+            <strong id="statCustomers">0</strong>
+          </div>
+        </div>
+        <div class="stat-card purple">
+          <div class="stat-card-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="stat-card-info">
+            <span>Popular Item</span>
+            <strong id="statPopular">–</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-row">
+        <div class="dash-card wide">
+          <div class="dash-card-header">
+            <h3>Recent Orders</h3>
+            <button class="btn btn-ghost btn-sm" onclick="switchPanel('orders')">View All</button>
+          </div>
+          <div class="table-wrap">
+            <table class="dash-table" id="recentOrdersTable">
+              <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Status</th></tr></thead>
+              <tbody id="recentOrdersTbody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-header"><h3>Sales by Item</h3></div>
+          <div id="popularItems"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ORDERS PANEL ===== -->
+    <div class="dash-panel" id="panel-orders">
+      <div class="panel-toolbar">
+        <div class="toolbar-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="orderSearch" placeholder="Search by Order ID or customer name..."/>
+        </div>
+        <select id="orderStatusFilter" class="toolbar-select">
+          <option value="all">All Status</option>
+          <option value="Received">Received</option>
+          <option value="Cooking">Cooking</option>
+          <option value="Out for Delivery">Out for Delivery</option>
+          <option value="Delivered">Delivered</option>
+        </select>
+      </div>
+      <div class="dash-card">
+        <div class="table-wrap">
+          <table class="dash-table" id="ordersTable">
+            <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total</th><th>Payment</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="ordersTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MENU PANEL ===== -->
+    <div class="dash-panel" id="panel-menu">
+      <div class="panel-toolbar">
+        <div class="toolbar-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="menuSearch" placeholder="Search menu items..."/>
+        </div>
+        <button class="btn btn-primary" id="addMenuItemBtn">
+          <i class="fa-solid fa-plus"></i> Add New Item
+        </button>
+      </div>
+      <div class="menu-admin-grid" id="menuAdminGrid"></div>
+    </div>
+
+    <!-- ===== MESSAGES PANEL ===== -->
+    <div class="dash-panel" id="panel-messages">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Customer Messages</h3></div>
+        <div id="messagesList"></div>
+      </div>
+    </div>
+
+    <!-- ===== CUSTOMERS PANEL ===== -->
+    <div class="dash-panel" id="panel-customers">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Registered Customers</h3></div>
+        <div class="table-wrap">
+          <table class="dash-table">
+            <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Orders</th></tr></thead>
+            <tbody id="customersTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /dash-content -->
+</div><!-- /dash-main -->
+
+<!-- ===== ADD/EDIT MENU ITEM MODAL ===== -->
+<div class="modal-overlay" id="menuItemOverlay">
+  <div class="modal">
+    <button class="modal-close" id="menuItemClose"><i class="fa-solid fa-xmark"></i></button>
+    <h3 id="menuItemModalTitle">Add New Food Item</h3>
+    <form id="menuItemForm" class="auth-form">
+      <input type="hidden" id="editItemId"/>
+      <div class="form-group"><label>Food Name</label><div class="input-wrap"><i class="fa-solid fa-utensils"></i><input type="text" id="itemName" placeholder="e.g. Chicken Biryani" required/></div></div>
+      <div class="form-group"><label>Description</label><div class="input-wrap"><i class="fa-solid fa-align-left"></i><input type="text" id="itemDesc" placeholder="Short description" required/></div></div>
+      <div class="form-group form-row-2">
+        <div><label>Price (৳)</label><div class="input-wrap"><i class="fa-solid fa-bangladeshi-taka-sign"></i><input type="number" id="itemPrice" placeholder="220" required min="1"/></div></div>
+        <div><label>Category</label>
+          <div class="input-wrap">
+            <i class="fa-solid fa-tag"></i>
+            <select id="itemCategory" required>
+              <option value="rice">Rice &amp; Biryani</option>
+              <option value="curry">Curries</option>
+              <option value="bread">Bread</option>
+              <option value="dessert">Desserts</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Food Emoji / Icon</label>
+        <div class="input-wrap"><i class="fa-solid fa-face-smile"></i><input type="text" id="itemEmoji" placeholder="e.g. 🍛" maxlength="4"/></div>
+      </div>
+      <div class="form-group">
+        <label>Tag Label</label>
+        <div class="input-wrap"><i class="fa-solid fa-tag"></i><input type="text" id="itemTag" placeholder="e.g. Bestseller"/></div>
+      </div>
+      <div class="form-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="itemAvailable" checked/> Available today
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary full-width" id="saveMenuItemBtn">
+        <i class="fa-solid fa-floppy-disk"></i> Save Item
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== ORDER STATUS MODAL ===== -->
+<div class="modal-overlay" id="orderStatusOverlay">
+  <div class="modal">
+    <button class="modal-close" id="orderStatusClose"><i class="fa-solid fa-xmark"></i></button>
+    <h3>Update Order Status</h3>
+    <p class="modal-subtitle" id="orderStatusSubtitle"></p>
+    <div class="status-options">
+      <label class="status-option"><input type="radio" name="orderStatus" value="Received"/><span><i class="fa-solid fa-receipt"></i> Received</span></label>
+      <label class="status-option"><input type="radio" name="orderStatus" value="Cooking"/><span><i class="fa-solid fa-fire-burner"></i> Cooking</span></label>
+      <label class="status-option"><input type="radio" name="orderStatus" value="Out for Delivery"/><span><i class="fa-solid fa-motorcycle"></i> Out for Delivery</span></label>
+      <label class="status-option"><input type="radio" name="orderStatus" value="Delivered"/><span><i class="fa-solid fa-house-circle-check"></i> Delivered</span></label>
+    </div>
+    <button class="btn btn-primary full-width" id="saveStatusBtn" style="margin-top:20px">
+      <i class="fa-solid fa-floppy-disk"></i> Save Status
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="data.js"></script>
+<script src="auth.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>
